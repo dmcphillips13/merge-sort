@@ -5,7 +5,8 @@ const split = (wholeArray) => {
   const midpoint = Math.floor(wholeArray.length / 2);
   const left = wholeArray.slice(0, midpoint);
   const right = wholeArray.slice(midpoint);
-  return merge(split(left), split(right));
+  //   return merge(split(left), split(right));
+  return [left, right];
 };
 
 const merge = (left, right) => {
@@ -24,12 +25,15 @@ const merge = (left, right) => {
   return result.concat(left.slice(leftIndex)).concat(right.slice(rightIndex));
 };
 
-const split = (arr) => arr.map((num) => [num]);
-
-const merge = (arr1, arr2) => {};
+// const merge = (arr1, arr2) => {};
 
 const mergeSort = (wholeArray) => {
+  let returnArray = [];
   let splitArray = split(wholeArray);
+  while (returnArray.length < wholeArray.length) {
+    merge(splitArray[0], splitArray[1]);
+  }
+  return returnArray;
 };
 
 module.exports = { split, merge };
